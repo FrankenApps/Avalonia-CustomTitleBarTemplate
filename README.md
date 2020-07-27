@@ -8,7 +8,7 @@ It allows for building TitleBars such as the ones used in Visual Studio Code or 
 * Linux (Coming soon / Will use Ubuntu styled title bar by default)
 
 ## Intended use
-It is likely, that the default implmentation does not fit your needs, therefore the main purpose of this project is to give an easy to follow example of how things can be implemented, so that you can implement your own custom title bar.
+It is likely, that the default implementation does not fit your needs, therefore the main purpose of this project is to give an easy to follow example of how things can be implemented, so that you can implement your own custom title bar.
 
 ## Use cases
 You may find this helpful, if
@@ -21,3 +21,7 @@ ExtendClientAreaToDecorationsHint="True"
 ExtendClientAreaChromeHints="PreferSystemChrome"
 ExtendClientAreaTitleBarHeightHint="-1"
 ```
+
+## Screenshots
+#### Windows
+![Windows Screenshot](https://raw.githubusercontent.com/FrankenApps/Avalonia-CustomTitleBarTemplate/master/Screenshots/screenshot.gif "Windows Screenshot")
