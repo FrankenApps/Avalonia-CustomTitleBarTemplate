@@ -7,6 +7,11 @@ It allows for building TitleBars such as the ones used in Visual Studio Code or 
 * MacOS (Coming soon)
 * Linux (Coming soon / Will use Ubuntu styled title bar by default)
 
+## How to run
+* Clone Repo `git clone https://github.com/FrankenApps/Avalonia-CustomTitleBarTemplate.git`
+* Change directory `cd Avalonia-CustomTitleBarTemplate`
+* Run project `dotnet run`
+
 ## Intended use
 It is likely, that the default implementation does not fit your needs, therefore the main purpose of this project is to give an easy to follow example of how things can be implemented, so that you can implement your own custom title bar.
 
