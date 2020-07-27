@@ -1,0 +1,38 @@
+# Exclude Visual Studio solution and project specific user options.
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
+*.opendb
+*.VC.db
+*.VC.VC.opendb
+
+# Exclude Visual Studio Code user options.
+.vscode/ 
+
+# Exclude StyleCop cache files.
+[Ss]tyle[Cc]op.[Cc]ache
+
+# Exclude build result files.
+[Bb]inary/
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+[Tt]estResults/
+
+# Exclude NuGet specific folders and files.
+*.nupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/[Ww]itron*
+!**/[Pp]ackages/[Bb]uild/
+!**/[Pp]ackages/[Rr]epositories.config
+
+# Exclude common temporary/log files.
+*~
+*.~*
+*.log
+
+# Exclude backup files created by some editors.
+*.bak
