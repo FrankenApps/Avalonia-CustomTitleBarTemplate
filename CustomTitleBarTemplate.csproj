@@ -5,12 +5,12 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="0.10.0-preview2" />
     <PackageReference Include="Avalonia.Desktop" Version="0.10.0-preview2" />
+    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.0-preview2" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.0-preview2" />
   </ItemGroup>
 </Project>

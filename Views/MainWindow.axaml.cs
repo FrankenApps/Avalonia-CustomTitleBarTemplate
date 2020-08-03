@@ -14,17 +14,23 @@ namespace CustomTitleBarTemplate.Views
         {
             this.InitializeComponent();
 
+            this.AttachDevTools();
+
             this.DataContext = new MainWindowViewModel(this);
 
             this.Height = 400;
             this.Width = 600;
+            this.Padding = new Thickness(
+                            this.OffScreenMargin.Left,
+                            this.OffScreenMargin.Top,
+                            this.OffScreenMargin.Right,
+                            this.OffScreenMargin.Bottom);
 
             darkThemeToggleButton = this.FindControl<ToggleButton>("DarkThemeToggleButton");
             darkThemeToggleButton.Checked += SetDarkTheme;
             darkThemeToggleButton.Unchecked += SetLightTheme;
 
             Application.Current.Styles[1] = App.FluentLight;
-
         }
 
         private void SetLightTheme(object sender, Avalonia.Interactivity.RoutedEventArgs e)

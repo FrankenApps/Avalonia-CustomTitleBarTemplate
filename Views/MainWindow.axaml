@@ -46,7 +46,8 @@
   </Window.KeyBindings>
 
   <DockPanel HorizontalAlignment="Stretch"
-             VerticalAlignment="Stretch">
+             VerticalAlignment="Stretch"
+             Name="ContentWrapper">
     <titlebars:WindowsTitleBar></titlebars:WindowsTitleBar>
     <DockPanel Background="Transparent">
       <ToggleButton HorizontalAlignment="Center"
