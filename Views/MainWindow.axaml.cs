@@ -3,7 +3,10 @@ using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
+using Avalonia.Media;
 using CustomTitleBarTemplate.ViewModels;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace CustomTitleBarTemplate.Views
 {
@@ -37,6 +40,8 @@ namespace CustomTitleBarTemplate.Views
         {
             Cursor = new Cursor(StandardCursorType.Wait);
             Application.Current.Styles[1] = App.FluentLight;
+            Application.Current.Resources["MacOsTitleBarBackground"] = new SolidColorBrush { Color = new Color(255, 222, 225, 230) };
+            Application.Current.Resources["MacOsWindowTitleColor"] = new SolidColorBrush { Color = new Color(255, 77, 77, 77) };
             Cursor = new Cursor(StandardCursorType.Arrow);
         }
 
@@ -44,6 +49,8 @@ namespace CustomTitleBarTemplate.Views
         {
             Cursor = new Cursor(StandardCursorType.Wait);
             Application.Current.Styles[1] = App.FluentDark;
+            Application.Current.Resources["MacOsTitleBarBackground"] = new SolidColorBrush { Color = new Color(255, 62, 62, 64) };
+            Application.Current.Resources["MacOsWindowTitleColor"] = new SolidColorBrush { Color = new Color(255, 153, 158, 161) };
             Cursor = new Cursor(StandardCursorType.Arrow);
         }
 

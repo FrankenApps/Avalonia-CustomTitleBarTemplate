@@ -48,7 +48,8 @@
   <DockPanel HorizontalAlignment="Stretch"
              VerticalAlignment="Stretch"
              Name="ContentWrapper">
-    <titlebars:WindowsTitleBar></titlebars:WindowsTitleBar>
+    <titlebars:WindowsTitleBar IsSeamless="True"></titlebars:WindowsTitleBar>
+    <titlebars:MacosTitleBar IsSeamless="False"></titlebars:MacosTitleBar>
     <DockPanel Background="Transparent">
       <ToggleButton HorizontalAlignment="Center"
                     VerticalAlignment="Center"

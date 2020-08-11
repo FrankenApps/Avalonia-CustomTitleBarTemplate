@@ -10,4 +10,9 @@
       <StyleInclude Source="avares://Avalonia.Themes.Default/DefaultTheme.xaml"></StyleInclude>
       <StyleInclude Source="avares://Avalonia.Themes.Fluent/Accents/FluentLight.xaml"></StyleInclude>
     </Application.Styles>
+
+    <Application.Resources>
+      <Brush x:Key="MacOsWindowTitleColor">#4D4D4D</Brush>
+      <Brush x:Key="MacOsTitleBarBackground">#DEE1E6</Brush>
+    </Application.Resources>
 </Application>

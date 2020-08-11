@@ -3,7 +3,6 @@ using Avalonia.Controls;
 using Avalonia.Controls.Shapes;
 using Avalonia.LogicalTree;
 using Avalonia.Markup.Xaml;
-using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using System;
@@ -13,20 +12,14 @@ using System.Threading.Tasks;
 
 namespace CustomTitleBarTemplate.Views.CustomTitleBars
 {
-    public class WindowsTitleBar : UserControl
+    public class MacosTitleBar : UserControl
     {
-        private Button minimizeButton;
-        private Button maximizeButton;
-        private Path maximizeIcon;
-        private ToolTip maximizeToolTip;
         private Button closeButton;
-        private Image windowIcon;
+        private Button minimizeButton;
+        private Button zoomButton;
 
-        private DockPanel titleBar;
         private DockPanel titleBarBackground;
-        private TextBlock systemChromeTitle;
-        private NativeMenuBar seamlessMenuBar;
-        private NativeMenuBar defaultMenuBar;
+        private StackPanel titleAndWindowIconWrapper;
 
         public static readonly StyledProperty<bool> IsSeamlessProperty =
         AvaloniaProperty.Register<MacosTitleBar, bool>(nameof(IsSeamless));
@@ -34,54 +27,36 @@ namespace CustomTitleBarTemplate.Views.CustomTitleBars
         public bool IsSeamless
         {
             get { return GetValue(IsSeamlessProperty); }
-            set
-            {
+            set {
                 SetValue(IsSeamlessProperty, value);
-                if (titleBarBackground != null && 
-                    systemChromeTitle != null &&
-                    seamlessMenuBar != null &&
-                    defaultMenuBar != null)
+                if (titleBarBackground != null && titleAndWindowIconWrapper != null)
                 {
                     titleBarBackground.IsVisible = IsSeamless ? false : true;
-                    systemChromeTitle.IsVisible = IsSeamless ? false : true;
-                    seamlessMenuBar.IsVisible = IsSeamless ? true : false;
-                    defaultMenuBar.IsVisible = IsSeamless ? false : true;
-
-                    if (IsSeamless == false)
-                    {
-                        titleBar.Resources["SystemControlForegroundBaseHighBrush"] = new SolidColorBrush { Color = new Color(255, 0, 0, 0) };
-                    }
+                    titleAndWindowIconWrapper.IsVisible = IsSeamless ? false : true;
                 }
             }
         }
 
-        public WindowsTitleBar()
+        public MacosTitleBar()
         {
             this.InitializeComponent();
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) == false)
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) == false)
             {
                 this.IsVisible = false;
             }
             else
             {
                 minimizeButton = this.FindControl<Button>("MinimizeButton");
-                maximizeButton = this.FindControl<Button>("MaximizeButton");
-                maximizeIcon = this.FindControl<Path>("MaximizeIcon");
-                maximizeToolTip = this.FindControl<ToolTip>("MaximizeToolTip");
+                zoomButton = this.FindControl<Button>("ZoomButton");
                 closeButton = this.FindControl<Button>("CloseButton");
-                windowIcon = this.FindControl<Image>("WindowIcon");
 
                 minimizeButton.Click += MinimizeWindow;
-                maximizeButton.Click += MaximizeWindow;
+                zoomButton.Click += MaximizeWindow;
                 closeButton.Click += CloseWindow;
-                windowIcon.DoubleTapped += CloseWindow;
 
-                titleBar = this.FindControl<DockPanel>("TitleBar");
                 titleBarBackground = this.FindControl<DockPanel>("TitleBarBackground");
-                systemChromeTitle = this.FindControl<TextBlock>("SystemChromeTitle");
-                seamlessMenuBar = this.FindControl<NativeMenuBar>("SeamlessMenuBar");
-                defaultMenuBar = this.FindControl<NativeMenuBar>("DefaultMenuBar");
+                titleAndWindowIconWrapper = this.FindControl<StackPanel>("TitleAndWindowIconWrapper");
 
                 SubscribeToWindowState();
             }
@@ -123,19 +98,16 @@ namespace CustomTitleBarTemplate.Views.CustomTitleBars
                 await Task.Delay(50);
             }
 
+            hostWindow.ExtendClientAreaTitleBarHeightHint = 44;
             hostWindow.GetObservable(Window.WindowStateProperty).Subscribe(s =>
             {
                 if (s != WindowState.Maximized)
                 {
-                    maximizeIcon.Data = Avalonia.Media.Geometry.Parse("M2048 2048v-2048h-2048v2048h2048zM1843 1843h-1638v-1638h1638v1638z");
-                    hostWindow.Padding = new Thickness(0,0,0,0);
-                    maximizeToolTip.Content = "Maximize";
+                    hostWindow.Padding = new Thickness(0, 0, 0, 0);
                 }
                 if (s == WindowState.Maximized)
                 {
-                    maximizeIcon.Data = Avalonia.Media.Geometry.Parse("M2048 1638h-410v410h-1638v-1638h410v-410h1638v1638zm-614-1024h-1229v1229h1229v-1229zm409-409h-1229v205h1024v1024h205v-1229z");
-                    hostWindow.Padding = new Thickness(7,7,7,7);
-                    maximizeToolTip.Content = "Restore Down";
+                    hostWindow.Padding = new Thickness(7, 7, 7, 7);
 
                     // This should be a more universal approach in both cases, but I found it to be less reliable, when for example double-clicking the title bar.
                     /*hostWindow.Padding = new Thickness(
