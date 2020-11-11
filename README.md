@@ -3,9 +3,9 @@ This is based on the Aavalonia MVVM Template, but allows for easy customization 
 It allows for building TitleBars such as the ones used in Visual Studio Code or in Visual Studio.
 
 ## Supported Platforms
-* Windows (Fluent Light / Dark)
-* MacOS (Coming soon)
-* Linux (Coming soon / Will use Ubuntu styled title bar by default)
+* Windows (Fluent Light / Dark) [Default Theme is in the works]
+* MacOS (Coming very soon)
+* Linux (Coming soon; Ubuntu styled) For Linux the default behaviour will be to use the native title bar, because there are too many desktop environments.
 
 ## How to run
 * Clone Repo `git clone https://github.com/FrankenApps/Avalonia-CustomTitleBarTemplate.git`

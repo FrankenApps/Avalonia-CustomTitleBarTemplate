@@ -51,10 +51,17 @@
     <titlebars:WindowsTitleBar IsSeamless="True"></titlebars:WindowsTitleBar>
     <titlebars:MacosTitleBar IsSeamless="False"></titlebars:MacosTitleBar>
     <DockPanel Background="Transparent">
-      <ToggleButton HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Name="DarkThemeToggleButton"
-                    Content="Dark Theme"></ToggleButton>
+      <StackPanel HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Spacing="10">
+        <ToggleButton Name="DarkThemeToggleButton"
+                      HorizontalAlignment="Center"
+                      Content="Dark Theme"></ToggleButton>
+        <ToggleButton Name="DefaultStyleToggleButton"
+                      HorizontalAlignment="Center"
+                      Content="Default Style"></ToggleButton>
+      </StackPanel>
+      
     </DockPanel>
   </DockPanel>
 

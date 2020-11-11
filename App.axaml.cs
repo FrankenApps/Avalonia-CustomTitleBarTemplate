@@ -27,6 +27,47 @@ namespace CustomTitleBarTemplate
             },
         };
 
+        public static Styles DefaultLight = new Styles
+        {
+            new StyleInclude(new Uri("resm:Styles?assembly=ControlCatalog"))
+            {
+                Source = new Uri("avares://Avalonia.Themes.Fluent/Accents/Base.xaml")
+            },
+            new StyleInclude(new Uri("resm:Styles?assembly=ControlCatalog"))
+            {
+                Source = new Uri("avares://Avalonia.Themes.Fluent/Accents/BaseLight.xaml")
+            },
+            new StyleInclude(new Uri("resm:Styles?assembly=ControlCatalog"))
+            {
+                Source = new Uri("avares://Avalonia.Themes.Default/Accents/BaseLight.xaml")
+            },
+            new StyleInclude(new Uri("resm:Styles?assembly=ControlCatalog"))
+            {
+                Source = new Uri("avares://Avalonia.Themes.Default/DefaultTheme.xaml")
+            }
+        };
+
+        public static Styles DefaultDark = new Styles
+        {
+            new StyleInclude(new Uri("resm:Styles?assembly=ControlCatalog"))
+            {
+                Source = new Uri("avares://Avalonia.Themes.Fluent/Accents/Base.xaml")
+            },
+            new StyleInclude(new Uri("resm:Styles?assembly=ControlCatalog"))
+            {
+                Source = new Uri("avares://Avalonia.Themes.Fluent/Accents/BaseDark.xaml")
+            },
+            new StyleInclude(new Uri("resm:Styles?assembly=ControlCatalog"))
+            {
+                Source = new Uri("avares://Avalonia.Themes.Default/Accents/BaseDark.xaml")
+            },
+            new StyleInclude(new Uri("resm:Styles?assembly=ControlCatalog"))
+            {
+                Source = new Uri("avares://Avalonia.Themes.Default/DefaultTheme.xaml")
+            }
+        };
+
+
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
