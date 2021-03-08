@@ -22,7 +22,10 @@ namespace CustomTitleBarTemplate.Views
         {
             this.InitializeComponent();
 
-            //this.AttachDevTools();
+            #if DEBUG
+            this.AttachDevTools();
+            #endif
+
 
             // Do not use a custom title bar on Linux, because there are too many possible options.
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) == true)
