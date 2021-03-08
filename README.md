@@ -4,8 +4,8 @@ It allows for building TitleBars such as the ones used in Visual Studio Code or 
 
 ## Supported Platforms
 * Windows (Fluent Light / Dark) [Default Theme is in the works]
-* MacOS (Coming very soon)
-* Linux (Coming soon; Ubuntu styled) For Linux the default behaviour will be to use the native title bar, because there are too many desktop environments.
+* MacOS (Fluent Light / Dark) [Not recommended to use, unless you customize the style to match your application.]
+* Linux [For Linux the default behaviour will be to use the native title bar, because there are too many desktop environments and configuration options.]
 
 ## How to run
 * Clone Repo `git clone https://github.com/FrankenApps/Avalonia-CustomTitleBarTemplate.git`
@@ -30,3 +30,6 @@ ExtendClientAreaTitleBarHeightHint="-1"
 ## Screenshots
 #### Windows
 ![Windows Screenshot](https://raw.githubusercontent.com/FrankenApps/Avalonia-CustomTitleBarTemplate/master/Screenshots/screenshot.gif "Windows Screenshot")
+
+#### MacOS
+![MacOS Screenshot](https://raw.githubusercontent.com/FrankenApps/Avalonia-CustomTitleBarTemplate/master/Screenshots/screenshot-mac.gif "MacOS Screenshot")
