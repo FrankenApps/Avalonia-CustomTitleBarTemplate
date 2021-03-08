@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Shapes;
+using Avalonia.Input;
 using Avalonia.LogicalTree;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
@@ -30,6 +31,10 @@ namespace CustomTitleBarTemplate.Views.CustomTitleBars
 
         public static readonly StyledProperty<bool> IsSeamlessProperty =
         AvaloniaProperty.Register<MacosTitleBar, bool>(nameof(IsSeamless));
+
+        private bool isPointerPressed = false;
+        private PixelPoint startPosition = new PixelPoint(0, 0);
+        private Point mouseOffsetToOrigin = new Point(0, 0);
 
         public bool IsSeamless
         {
@@ -83,8 +88,38 @@ namespace CustomTitleBarTemplate.Views.CustomTitleBars
                 seamlessMenuBar = this.FindControl<NativeMenuBar>("SeamlessMenuBar");
                 defaultMenuBar = this.FindControl<NativeMenuBar>("DefaultMenuBar");
 
+                this.PointerPressed += BeginListenForDrag;
+                this.PointerMoved += HandlePotentialDrag;
+                this.PointerReleased += HandlePotentialDrop;
+                this.Background = Brushes.Transparent;
+
                 SubscribeToWindowState();
             }
+        }
+
+        private void HandlePotentialDrop(object sender, PointerReleasedEventArgs e)
+        {
+            var pos = e.GetPosition(this);
+            startPosition = new PixelPoint((int)(startPosition.X + pos.X - mouseOffsetToOrigin.X), (int)(startPosition.Y + pos.Y - mouseOffsetToOrigin.Y));
+            ((Window)this.VisualRoot).Position = startPosition;
+            isPointerPressed = false;
+        }
+
+        private void HandlePotentialDrag(object sender, PointerEventArgs e)
+        {
+            if (isPointerPressed)
+            {
+                var pos = e.GetPosition(this);
+                startPosition = new PixelPoint((int)(startPosition.X + pos.X - mouseOffsetToOrigin.X), (int)(startPosition.Y + pos.Y - mouseOffsetToOrigin.Y));
+                ((Window)this.VisualRoot).Position = startPosition;
+            }
+        }
+
+        private void BeginListenForDrag(object sender, PointerPressedEventArgs e)
+        {
+            startPosition = ((Window)this.VisualRoot).Position;
+            mouseOffsetToOrigin = e.GetPosition(this);
+            isPointerPressed = true;
         }
 
         private void CloseWindow(object sender, Avalonia.Interactivity.RoutedEventArgs e)

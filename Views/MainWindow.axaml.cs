@@ -37,6 +37,8 @@ namespace CustomTitleBarTemplate.Views
 
             this.Height = 400;
             this.Width = 600;
+            this.CanResize = false;
+            
             this.Padding = new Thickness(
                             this.OffScreenMargin.Left,
                             this.OffScreenMargin.Top,
