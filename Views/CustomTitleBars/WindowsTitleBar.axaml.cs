@@ -29,7 +29,7 @@ namespace CustomTitleBarTemplate.Views.CustomTitleBars
         private NativeMenuBar defaultMenuBar;
 
         public static readonly StyledProperty<bool> IsSeamlessProperty =
-        AvaloniaProperty.Register<MacosTitleBar, bool>(nameof(IsSeamless));
+        AvaloniaProperty.Register<WindowsTitleBar, bool>(nameof(IsSeamless));
 
         public bool IsSeamless
         {
@@ -127,13 +127,13 @@ namespace CustomTitleBarTemplate.Views.CustomTitleBars
             {
                 if (s != WindowState.Maximized)
                 {
-                    maximizeIcon.Data = Avalonia.Media.Geometry.Parse("M2048 2048v-2048h-2048v2048h2048zM1843 1843h-1638v-1638h1638v1638z");
+                    maximizeIcon.Data = Geometry.Parse("M2048 2048v-2048h-2048v2048h2048zM1843 1843h-1638v-1638h1638v1638z");
                     hostWindow.Padding = new Thickness(0,0,0,0);
                     maximizeToolTip.Content = "Maximize";
                 }
                 if (s == WindowState.Maximized)
                 {
-                    maximizeIcon.Data = Avalonia.Media.Geometry.Parse("M2048 1638h-410v410h-1638v-1638h410v-410h1638v1638zm-614-1024h-1229v1229h1229v-1229zm409-409h-1229v205h1024v1024h205v-1229z");
+                    maximizeIcon.Data = Geometry.Parse("M2048 1638h-410v410h-1638v-1638h410v-410h1638v1638zm-614-1024h-1229v1229h1229v-1229zm409-409h-1229v205h1024v1024h205v-1229z");
                     hostWindow.Padding = new Thickness(7,7,7,7);
                     maximizeToolTip.Content = "Restore Down";
 
