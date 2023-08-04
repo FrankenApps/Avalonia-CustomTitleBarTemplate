@@ -1,19 +1,15 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Shapes;
-using Avalonia.LogicalTree;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
-using Avalonia.Media.Imaging;
-using Avalonia.Platform;
 using System;
 using System.Runtime.InteropServices;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace CustomTitleBarTemplate.Views.CustomTitleBars
 {
-    public class WindowsTitleBar : UserControl
+    public partial class WindowsTitleBar : UserControl
     {
         private Button minimizeButton;
         private Button maximizeButton;

@@ -4,6 +4,7 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
+using Avalonia.Styling;
 using CustomTitleBarTemplate.ViewModels;
 using System.Linq;
 using System.Linq.Expressions;
@@ -11,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace CustomTitleBarTemplate.Views
 {
-    public class MainWindow : Window
+    public partial class MainWindow : Window
     {
         private ToggleButton darkThemeToggleButton;
         private ToggleButton defaultStyleToggleButton;
@@ -44,48 +45,67 @@ namespace CustomTitleBarTemplate.Views
                             this.OffScreenMargin.Bottom);
 
             darkThemeToggleButton = this.FindControl<ToggleButton>("DarkThemeToggleButton");
-            darkThemeToggleButton.Checked += SetDarkTheme;
-            darkThemeToggleButton.Unchecked += SetLightTheme;
+            darkThemeToggleButton.IsCheckedChanged += DarkThemeToggleButton_IsCheckedChanged;
 
             defaultStyleToggleButton = this.FindControl<ToggleButton>("DefaultStyleToggleButton");
-            defaultStyleToggleButton.Checked += SetDefaultTheme;
-            defaultStyleToggleButton.Unchecked += SetFluentTheme;
+            defaultStyleToggleButton.IsCheckedChanged += DefaultStyleToggleButton_IsCheckedChanged;
 
-            Application.Current.Styles[1] = App.FluentLight;
+            Application.Current.Styles[1] = App.FluentTheme;
+            Application.Current.RequestedThemeVariant = ThemeVariant.Light;
         }
 
-        private void SetLightTheme(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private void DefaultStyleToggleButton_IsCheckedChanged(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            if (defaultStyleToggleButton.IsChecked == true)
+            {
+                SetDefaultTheme();
+                return;
+            }
+
+            SetFluentTheme();
+        }
+
+        private void DarkThemeToggleButton_IsCheckedChanged(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            if (darkThemeToggleButton.IsChecked == true)
+            {
+                SetDarkTheme();
+                return;
+            }
+
+            SetLightTheme();
+        }
+
+        private void SetLightTheme()
         {
             Cursor = new Cursor(StandardCursorType.Wait);
-            Application.Current.Styles[1] = isDefaultStyle ? App.DefaultLight : App.FluentLight;
+            Application.Current.RequestedThemeVariant = ThemeVariant.Light;
             Application.Current.Resources["MacOsTitleBarBackground"] = new SolidColorBrush { Color = new Color(255, 222, 225, 230) };
             Application.Current.Resources["MacOsWindowTitleColor"] = new SolidColorBrush { Color = new Color(255, 77, 77, 77) };
             Cursor = new Cursor(StandardCursorType.Arrow);
             isDarkTheme = false;
         }
 
-        private void SetDarkTheme(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private void SetDarkTheme()
         {
             Cursor = new Cursor(StandardCursorType.Wait);
-            Application.Current.Styles[1] = isDefaultStyle ? App.DefaultDark : App.FluentDark;
-            Application.Current.Resources["MacOsTitleBarBackground"] = new SolidColorBrush { Color = new Color(255, 62, 62, 64) };
-            Application.Current.Resources["MacOsWindowTitleColor"] = new SolidColorBrush { Color = new Color(255, 153, 158, 161) };
+            Application.Current.RequestedThemeVariant = ThemeVariant.Dark;
             Cursor = new Cursor(StandardCursorType.Arrow);
             isDarkTheme = true;
         }
 
-        private void SetDefaultTheme(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private void SetDefaultTheme()
         {
             Cursor = new Cursor(StandardCursorType.Wait);
-            Application.Current.Styles[1] = isDarkTheme ? App.DefaultDark : App.DefaultLight;
+            Application.Current.Styles[1] = App.SimpleTheme;
             Cursor = new Cursor(StandardCursorType.Arrow);
             isDefaultStyle = true;
         }
 
-        private void SetFluentTheme(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private void SetFluentTheme()
         {
             Cursor = new Cursor(StandardCursorType.Wait);
-            Application.Current.Styles[1] = isDarkTheme ? App.FluentDark : App.FluentLight;
+            Application.Current.Styles[1] = App.FluentTheme;
             Cursor = new Cursor(StandardCursorType.Arrow);
             isDefaultStyle = false;
         }

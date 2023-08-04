@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CustomTitleBarTemplate.Views.CustomTitleBars
 {
-    public class MacosTitleBar : UserControl
+    public partial class MacosTitleBar : UserControl
     {
         private Button closeButton;
         private Button minimizeButton;
