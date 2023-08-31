@@ -50,7 +50,6 @@ namespace CustomTitleBarTemplate.Views
             defaultStyleToggleButton = this.FindControl<ToggleButton>("DefaultStyleToggleButton");
             defaultStyleToggleButton.IsCheckedChanged += DefaultStyleToggleButton_IsCheckedChanged;
 
-            Application.Current.Styles[1] = App.FluentTheme;
             Application.Current.RequestedThemeVariant = ThemeVariant.Light;
         }
 
@@ -97,7 +96,7 @@ namespace CustomTitleBarTemplate.Views
         private void SetDefaultTheme()
         {
             Cursor = new Cursor(StandardCursorType.Wait);
-            Application.Current.Styles[1] = App.SimpleTheme;
+            Application.Current.Styles[0] = App.SimpleTheme;
             Cursor = new Cursor(StandardCursorType.Arrow);
             isDefaultStyle = true;
         }
@@ -105,7 +104,7 @@ namespace CustomTitleBarTemplate.Views
         private void SetFluentTheme()
         {
             Cursor = new Cursor(StandardCursorType.Wait);
-            Application.Current.Styles[1] = App.FluentTheme;
+            Application.Current.Styles[0] = App.FluentTheme;
             Cursor = new Cursor(StandardCursorType.Arrow);
             isDefaultStyle = false;
         }
