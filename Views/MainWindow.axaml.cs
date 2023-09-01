@@ -6,8 +6,6 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using Avalonia.Styling;
 using CustomTitleBarTemplate.ViewModels;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Runtime.InteropServices;
 
 namespace CustomTitleBarTemplate.Views
@@ -17,8 +15,6 @@ namespace CustomTitleBarTemplate.Views
         private ToggleButton darkThemeToggleButton;
         private ToggleButton defaultStyleToggleButton;
 
-        private bool isDefaultStyle = false;
-        private bool isDarkTheme = false;
         public MainWindow()
         {
             this.InitializeComponent();
@@ -83,7 +79,6 @@ namespace CustomTitleBarTemplate.Views
             Application.Current.Resources["MacOsTitleBarBackground"] = new SolidColorBrush { Color = new Color(255, 222, 225, 230) };
             Application.Current.Resources["MacOsWindowTitleColor"] = new SolidColorBrush { Color = new Color(255, 77, 77, 77) };
             Cursor = new Cursor(StandardCursorType.Arrow);
-            isDarkTheme = false;
         }
 
         private void SetDarkTheme()
@@ -91,7 +86,6 @@ namespace CustomTitleBarTemplate.Views
             Cursor = new Cursor(StandardCursorType.Wait);
             Application.Current.RequestedThemeVariant = ThemeVariant.Dark;
             Cursor = new Cursor(StandardCursorType.Arrow);
-            isDarkTheme = true;
         }
 
         private void SetDefaultTheme()
@@ -99,7 +93,6 @@ namespace CustomTitleBarTemplate.Views
             Cursor = new Cursor(StandardCursorType.Wait);
             Application.Current.Styles[1] = App.SimpleTheme;
             Cursor = new Cursor(StandardCursorType.Arrow);
-            isDefaultStyle = true;
         }
 
         private void SetFluentTheme()
@@ -107,7 +100,6 @@ namespace CustomTitleBarTemplate.Views
             Cursor = new Cursor(StandardCursorType.Wait);
             Application.Current.Styles[1] = App.FluentTheme;
             Cursor = new Cursor(StandardCursorType.Arrow);
-            isDefaultStyle = false;
         }
 
         private void UseNativeTitleBar()
