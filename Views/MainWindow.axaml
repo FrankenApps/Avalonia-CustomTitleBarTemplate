@@ -57,9 +57,6 @@
         <ToggleButton Name="DarkThemeToggleButton"
                       HorizontalAlignment="Center"
                       Content="Dark Theme"></ToggleButton>
-        <ToggleButton Name="DefaultStyleToggleButton"
-                      HorizontalAlignment="Center"
-                      Content="Default Style"></ToggleButton>
       </StackPanel>
       
     </DockPanel>

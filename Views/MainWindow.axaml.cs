@@ -13,7 +13,6 @@ namespace CustomTitleBarTemplate.Views
     public partial class MainWindow : Window
     {
         private ToggleButton darkThemeToggleButton;
-        private ToggleButton defaultStyleToggleButton;
 
         public MainWindow()
         {
@@ -43,21 +42,7 @@ namespace CustomTitleBarTemplate.Views
             darkThemeToggleButton = this.FindControl<ToggleButton>("DarkThemeToggleButton");
             darkThemeToggleButton.IsCheckedChanged += DarkThemeToggleButton_IsCheckedChanged;
 
-            defaultStyleToggleButton = this.FindControl<ToggleButton>("DefaultStyleToggleButton");
-            defaultStyleToggleButton.IsCheckedChanged += DefaultStyleToggleButton_IsCheckedChanged;
-
             Application.Current.RequestedThemeVariant = ThemeVariant.Light;
-        }
-
-        private void DefaultStyleToggleButton_IsCheckedChanged(object sender, Avalonia.Interactivity.RoutedEventArgs e)
-        {
-            if (defaultStyleToggleButton.IsChecked == true)
-            {
-                SetDefaultTheme();
-                return;
-            }
-
-            SetFluentTheme();
         }
 
         private void DarkThemeToggleButton_IsCheckedChanged(object sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -84,20 +69,6 @@ namespace CustomTitleBarTemplate.Views
         {
             Cursor = new Cursor(StandardCursorType.Wait);
             Application.Current.RequestedThemeVariant = ThemeVariant.Dark;
-            Cursor = new Cursor(StandardCursorType.Arrow);
-        }
-
-        private void SetDefaultTheme()
-        {
-            Cursor = new Cursor(StandardCursorType.Wait);
-            Application.Current.Styles[0] = App.SimpleTheme;
-            Cursor = new Cursor(StandardCursorType.Arrow);
-        }
-
-        private void SetFluentTheme()
-        {
-            Cursor = new Cursor(StandardCursorType.Wait);
-            Application.Current.Styles[0] = App.FluentTheme;
             Cursor = new Cursor(StandardCursorType.Arrow);
         }
 
