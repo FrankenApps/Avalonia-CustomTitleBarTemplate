@@ -32,11 +32,13 @@
                      IsHitTestVisible="False"
                      Name="SystemChromeTitle"></TextBlock>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Right"
+        <StackPanel Height="22" 
+					HorizontalAlignment="Right"
                     Orientation="Horizontal"
-                    Spacing="0">
+                    Spacing="0"
+					VerticalAlignment="Top">
           <Button Width="46"
-                  Height="30"
+				  VerticalAlignment="Stretch"
                   HorizontalContentAlignment="Center"
                   BorderThickness="0"
                   Name="MinimizeButton"
@@ -54,6 +56,7 @@
             </Button.Styles>
             <Path Margin="10,0,10,0"
                   Stretch="Uniform"
+				  VerticalAlignment="Center"
                   Fill="{DynamicResource SystemControlForegroundBaseHighBrush}"
                   Data="M2048 1229v-205h-2048v205h2048z"></Path>
           </Button>
